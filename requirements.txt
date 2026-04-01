@@ -2,6 +2,13 @@ streamlit
 openai
 fpdf
 pandas
+matplotlib
+Pillow
+
+streamlit
+openai
+fpdf
+pandas
 numpy
 
 
