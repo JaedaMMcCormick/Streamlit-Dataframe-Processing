@@ -1,0 +1,7 @@
+streamlit
+openai
+fpdf
+pandas
+numpy
+
+
