@@ -10,7 +10,17 @@ import matplotlib.pyplot as plt
 from openai import OpenAI
 
 # ------------------ OPENAI CLIENT ------------------
-client = OpenAI(api_key="sk-XXXXXXXXXXXXXXXXXXXX")
+# --- OpenAI API Key setup ---
+# 1. Try Streamlit secrets first (for Streamlit Cloud)
+# 2. Fallback to environment variable (for local testing)
+OPENAI_API_KEY = st.secrets.get("OPENAI_API_KEY") or os.environ.get("OPENAI_API_KEY")
+
+if not OPENAI_API_KEY:
+    st.error("OpenAI API key is not set! Please add it to Streamlit secrets or your environment variables.")
+    st.stop()  # Stop the app if no key
+
+# Create the OpenAI client
+client = OpenAI(api_key=OPENAI_API_KEY)
 
 # ------------------ CONSTANTS ------------------
 STENCIL_PATH = "assets/compactor_stencil.png"
